@@ -81,7 +81,7 @@ spec:
   - port: 8089
     protocol: TCP
     targetPort: http
-  type: NodePort
+  type: ClusterIp
   selector:
     app: wa2
 ---
@@ -117,8 +117,7 @@ metadata:
 #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: mylocal.axess.org
-    http:
+  - http:
       paths:
       - path: /wa2
         pathType: Prefix
