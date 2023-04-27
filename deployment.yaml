@@ -122,7 +122,8 @@ metadata:
 #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - http:
+  - host: mylocal.axess.org
+    http:
       paths:
       - path: /wa2
         pathType: Prefix
