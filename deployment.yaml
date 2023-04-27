@@ -117,7 +117,8 @@ metadata:
 #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - http:
+  - host: 172.29.170.228
+    http:
       paths:
       - path: /wa2
         pathType: Prefix
