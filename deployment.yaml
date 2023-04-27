@@ -81,7 +81,7 @@ spec:
   - port: 8089
     protocol: TCP
     targetPort: http
-  type: ClusterIp
+  type: ClusterIP
   selector:
     app: wa2
 ---
