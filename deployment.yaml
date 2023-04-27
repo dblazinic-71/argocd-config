@@ -78,13 +78,9 @@ metadata:
     app: wa2
 spec:
   ports:
-  - name: http
+  - port: 8089
     protocol: TCP
-    port: 5068
-    targetPort: 5068
-  #- port: 8089
-  #  protocol: TCP
-  #  targetPort: http
+    targetPort: http
   type: ClusterIP
   selector:
     app: wa2
@@ -116,14 +112,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wa2-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  #annotations:
 #  kubernetes.io/ingress.class: traefik  
 #  traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: mylocal.axess.org
-    http:
+  - http:
       paths:
       - path: /wa2
         pathType: Prefix
@@ -131,7 +125,7 @@ spec:
           service:
             name: wa2-service
             port:
-              name: http
+              number: 8089
 #---
 #apiVersion: traefik.containo.us/v1alpha1
 #kind: IngressRoute
