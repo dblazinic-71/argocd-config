@@ -42,7 +42,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wa1-ingress
-  namespace: argocd-test
+  namespace: ingress-nginx
   #annotations:
 #  kubernetes.io/ingress.class: traefik  
 #  traefik.ingress.kubernetes.io/router.entrypoints: web
@@ -118,7 +118,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wa2-ingress
-  namespace: argocd-test
+  namespace: ingress-nginx
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
