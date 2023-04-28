@@ -78,7 +78,8 @@ metadata:
     app: wa2
 spec:
   ports:
-  - port: 8089
+  - name: http  
+    port: 8089
     protocol: TCP
     targetPort: http
   type: ClusterIP
@@ -112,12 +113,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wa2-ingress
-  #annotations:
-#  kubernetes.io/ingress.class: traefik  
-#  traefik.ingress.kubernetes.io/router.entrypoints: web
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host: localhost # Replace with your own domain or IP address
+    http:
       paths:
       - path: /wa2
         pathType: Prefix
@@ -125,7 +126,7 @@ spec:
           service:
             name: wa2-service
             port:
-              number: 8089
+              name: http
 #---
 #apiVersion: traefik.containo.us/v1alpha1
 #kind: IngressRoute
