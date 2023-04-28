@@ -117,7 +117,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: localhost # Replace with your own domain or IP address
+  - host: mylocal.axess.org # Replace with your own domain or IP address
     http:
       paths:
       - path: /wa2
